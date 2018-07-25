@@ -4,12 +4,12 @@ services:
     db:
         image: mariadb:latest
         volumes:
-            - db_data:/var/lib/mysql/
-            - db_config_data:/etc/mysql/
+            - db_data: /var/lib/mysql/
+            - db_config_data: /etc/mysql/
         ports:
-            - "3060:3060"
+            - "3306:3306"
         environment:
-            MYSQL_ROOT_PASSWORD:${SQL_ROOT_PASSWORD}
+            - MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
     frontend:
         image: failender/dsa-online-frontend:${DSA_ONLINE_VERSION}
         ports:
@@ -19,10 +19,10 @@ services:
         ports:
             - "${BACKEND_PORT}:8080"
         environment:
-            -spring.datasource.user:root
-            -spring.datasource.password:${SQL_ROOT_PASSWORD}
-            -spring.datasource.url:jdbc:mysql://db:3306/dsa-online-rest
-            -dsa.online.cache.directory:/cache
+            - spring.datasource.user: "root"
+            - spring.datasource.password: ${SQL_ROOT_PASSWORD}
+            - spring.datasource.url: "jdbc:mysql://db:3306/dsa-online-rest"
+            - dsa.online.cache.directory: "/cache"
 volumes:
     db_data:
     db_config_data:

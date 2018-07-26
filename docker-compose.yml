@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
   frontend:
     image: failender/dsa-online-frontend:${DSA_ONLINE_VERSION}
     ports:

@@ -7,5 +7,6 @@ jobs:
       script:
       - docker login -u $DOCKER_USER -p $DOCKER_PASS
       - docker build -t dsa-online-proxy:$TRAVIS_BRANCH .
+      - echo $REPO
       - docker push $REPO
 

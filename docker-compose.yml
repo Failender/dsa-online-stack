@@ -2,7 +2,7 @@ version: '3'
 
 services:
   proxy:
-    image: failender/dsa-online-proxy
+    image: failender/dsa-online-proxy:${version}
     ports:
       - 80:80
     restart: always

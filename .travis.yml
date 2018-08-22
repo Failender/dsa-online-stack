@@ -6,7 +6,6 @@ jobs:
     - stage: build docker image
       script:
       - docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - docker build -t dsa-online-proxy:$TRAVIS_BRANCH .
-      - echo $REPO
+      - docker build -t $REPO:$TRAVIS_BRANCH .
       - docker push $REPO
 

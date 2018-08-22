@@ -2,10 +2,9 @@ version: '3'
 
 services:
   proxy:
-    image: failender/dsa-online-proxy
+    image: proxy
     ports:
       - 80:80
-      - 8080:8080
     restart: always
   db: 
     image: mariadb:latest
@@ -15,7 +14,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=${dbpw}
+      - MYSQL_ROOT_PASSWORD=${dbpassword}
     
   frontend:
     image: failender/dsa-online-frontend:${version}
@@ -27,13 +26,15 @@ services:
 
     environment:
       - spring.datasource.username=root
-      - spring.datasource.password=${dbpw}
+      - spring.datasource.password=${dbpassword}
       - spring.datasource.url=jdbc:mysql://db:3306/dsa
       - dsa.online.cache.directory=/cache
+      - dsa.online.scripts.directory=/cache/scripts
       - dsa.online.backend.version=${version}
       - dsa.online.frontend.version=${version}
 volumes:
   db-data: {}
   rest-cache: {}
   
+   
     

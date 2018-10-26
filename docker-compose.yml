@@ -2,9 +2,10 @@ version: '3'
 
 services:
   proxy:
-    image: failender/dsa-online-proxy:${version}
+    image: failender/dsa-online-proxy:master
     ports:
       - 80:80
+      - 443:443
     restart: always
   db: 
     image: mariadb:latest
@@ -37,5 +38,3 @@ volumes:
   db-data: {}
   rest-cache: {}
   
-   
-    

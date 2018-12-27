@@ -34,6 +34,8 @@ services:
       - dsa.online.scripts.directory=/cache/scripts
       - dsa.online.backend.version=${version}
       - dsa.online.frontend.version=${version}
+      - dsa.gruppen.online.adminPassword=${adminPassword}
+      - dsa.gruppen.online.defaultGroup=Der Runde Tisch
 volumes:
   db-data: {}
   rest-cache: {}
